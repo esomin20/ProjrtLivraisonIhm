@@ -1,4 +1,4 @@
-package Repesitory;
+package com.example.projrtlivraisonihm.Repesitory;
 import com.example.projrtlivraisonihm.Entities.client;
 import com.example.projrtlivraisonihm.Entities.livreur;
 import org.springframework.data.jpa.repository.JpaRepository;

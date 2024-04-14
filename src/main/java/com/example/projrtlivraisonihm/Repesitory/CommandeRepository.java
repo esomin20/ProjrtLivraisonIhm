@@ -1,4 +1,4 @@
-package Repesitory;
+package com.example.projrtlivraisonihm.Repesitory;
 
 import com.example.projrtlivraisonihm.Entities.TypeCommande;
 import com.example.projrtlivraisonihm.Entities.commande;

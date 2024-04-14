@@ -1,6 +1,6 @@
-package Services;
+package com.example.projrtlivraisonihm.Services;
 
-import Repesitory.CommandeRepository;
+import com.example.projrtlivraisonihm.Repesitory.CommandeRepository;
 import com.example.projrtlivraisonihm.Entities.TypeCommande;
 import com.example.projrtlivraisonihm.Entities.commande;
 import com.example.projrtlivraisonihm.Entities.livreur;

@@ -1,12 +1,11 @@
-package Services;
+package com.example.projrtlivraisonihm.Services;
 
-import Repesitory.ClientRespository;
+import com.example.projrtlivraisonihm.Repesitory.ClientRespository;
 import org.springframework.stereotype.Service;
 
 import com.example.projrtlivraisonihm.Entities.client;
 import com.example.projrtlivraisonihm.Entities.livreur;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
@@ -53,4 +52,7 @@ public class ServiceClient {
     public List<client> trouverClientsDesservisParLivreur(livreur livr) {
         return clientRepository.getClientsDesservisParLivreur(livr);
     }
+
+    // testtt
+
 }
