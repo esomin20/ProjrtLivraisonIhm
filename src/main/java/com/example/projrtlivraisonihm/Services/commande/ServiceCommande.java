@@ -1,4 +1,4 @@
-package com.example.projrtlivraisonihm.Services;
+package com.example.projrtlivraisonihm.Services.commande;
 
 import com.example.projrtlivraisonihm.Repesitory.CommandeRepository;
 import com.example.projrtlivraisonihm.Entities.TypeCommande;

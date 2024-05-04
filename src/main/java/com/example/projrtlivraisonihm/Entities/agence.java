@@ -9,7 +9,9 @@ public class agence {
     private String nom;
     private String adresse;
     private String telephone;
+
     private String email;
+    private String motDePasse;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_admin", nullable = false)

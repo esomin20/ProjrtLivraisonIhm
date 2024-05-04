@@ -1,4 +1,4 @@
-package com.example.projrtlivraisonihm.Services;
+package com.example.projrtlivraisonihm.Services.client;
 
 import com.example.projrtlivraisonihm.Repesitory.ClientRespository;
 import org.springframework.stereotype.Service;
