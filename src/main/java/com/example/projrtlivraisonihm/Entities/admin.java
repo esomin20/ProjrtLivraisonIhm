@@ -19,6 +19,7 @@ public class admin {
     private String adresse;
     private Long telephone;
     private String email;
+    private String password;
     private Date dateNaissance;
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
