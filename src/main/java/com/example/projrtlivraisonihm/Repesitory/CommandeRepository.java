@@ -3,11 +3,12 @@ package com.example.projrtlivraisonihm.Repesitory;
 import com.example.projrtlivraisonihm.Entities.TypeCommande;
 import com.example.projrtlivraisonihm.Entities.commande;
 import com.example.projrtlivraisonihm.Entities.livreur;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
 @Repository
-public interface CommandeRepository {
+public interface CommandeRepository extends JpaRepository<commande, Long> {
     // Trouver une commande par son ID
     commande findById(int id);
 
@@ -34,6 +35,5 @@ public interface CommandeRepository {
     // méthode personnalisée pour obtenir la liste des commandes effectuées par un client spécifique
     List<commande> findByClient(commande client);
 
-    // Méthode pour assigner une commande à un livreur spécifique
-    public void assignerCommandeALivreur(commande commande, livreur livr);
+
 }

@@ -55,4 +55,8 @@ public class ServiceClient {
 
     // testtt
 
+    public long countClient(){
+        return clientRepository.count();
+    }
+
 }
