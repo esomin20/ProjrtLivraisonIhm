@@ -3,6 +3,7 @@ package com.example.projrtlivraisonihm.Services.compte;
 import com.example.projrtlivraisonihm.Entities.compte;
 import com.example.projrtlivraisonihm.Repesitory.CompteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,11 +1,8 @@
 package com.example.projrtlivraisonihm.Services.commande;
 
-import com.example.projrtlivraisonihm.Entities.client;
+import com.example.projrtlivraisonihm.Entities.*;
 import com.example.projrtlivraisonihm.Repesitory.ClientRespository;
 import com.example.projrtlivraisonihm.Repesitory.CommandeRepository;
-import com.example.projrtlivraisonihm.Entities.TypeCommande;
-import com.example.projrtlivraisonihm.Entities.commande;
-import com.example.projrtlivraisonihm.Entities.livreur;
 import com.example.projrtlivraisonihm.Repesitory.LivreurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +23,42 @@ public class ServiceCommande {
         this.commandeRepository = commandeRepository;
         this.clientRespository = clientRespository;
         this.livreurRepository=livreurRepository;
+    }
+    public commande saveCommande(commande commande) {
+        return commandeRepository.save(commande);
+    }
+
+    public void deleteCommande(Long id) {
+        commandeRepository.deleteById(id);
+    }
+
+    public commande updateCommande(Long id, commande newCommande) {
+        return commandeRepository.findById(id)
+                .map(existingCommande -> {
+                    existingCommande.setNom(newCommande.getNom());
+                    existingCommande.setDate_min(newCommande.getDate_min());
+                    existingCommande.setDate_max(newCommande.getDate_max());
+                    existingCommande.setAffecté(newCommande.isAffecté());
+                    existingCommande.setType(newCommande.getType());
+                    existingCommande.setAccomplie(newCommande.isAccomplie());
+
+                    // Mise à jour des associations
+                    if (newCommande.getAdmin() != null) {
+                        existingCommande.setAdmin(newCommande.getAdmin());
+                    }
+                    if (newCommande.getLivreur() != null) {
+                        existingCommande.setLivreur(newCommande.getLivreur());
+                    }
+                    if (newCommande.getAgence() != null) {
+                        existingCommande.setAgence(newCommande.getAgence());
+                    }
+                    if (newCommande.getClient() != null) {
+                        existingCommande.setClient(newCommande.getClient());
+                    }
+
+                    return commandeRepository.save(existingCommande);
+                })
+                .orElseThrow(() -> new IllegalArgumentException("Commande non trouvée avec l'ID: " + id));
     }
 
     // Méthode pour trouver une commande par son ID

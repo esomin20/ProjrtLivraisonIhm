@@ -51,23 +51,6 @@ public class ServiceAgence {
                     return agenceRepository.save(newAgence);
                 });
     }
-
-   /* public agence affecterCommandeALivreur(Long idAgence, int idCommande) {
-        Optional<agence> agenceOpt = agenceRepository.findById(idAgence);
-        Optional<commande> commandeOpt = Optional.ofNullable(commandeRepository.findById(idCommande));
-
-        if (agenceOpt.isPresent() && commandeOpt.isPresent()) {
-            agence ag = agenceOpt.get();
-            commande cmd = commandeOpt.get();
-            cmd.setAgence(ag);
-            commandeRepository.save(cmd);
-            return ag;
-        } else {
-            throw new RuntimeException("Agence ou Commande introuvable");
-        }
-    }
-*/
-
     public agence registerAgence(agence newAgence) {
         Optional<agence> existingAgence = agenceRepository.findByEmail(newAgence.getEmail());
         if (existingAgence.isPresent()) {
