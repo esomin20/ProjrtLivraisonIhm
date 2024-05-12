@@ -8,7 +8,7 @@ import java.util.List;
 public class agence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_agence;
+    private Long idAgence;
     private String nom;
     private String adresse;
     private String telephone;
@@ -16,7 +16,7 @@ public class agence {
     private String password;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_admin", nullable = false)
+    @JoinColumn(name = "idAdmin", nullable = false)
     private admin admin;
 
     @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

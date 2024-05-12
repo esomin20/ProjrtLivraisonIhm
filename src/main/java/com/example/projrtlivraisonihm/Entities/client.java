@@ -10,20 +10,25 @@ import java.util.List;
 public class client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_client;
+    private Long idClient;
+
     private String nom;
     private String prenom;
-    private String CIN;
+    private String cin; // Renamed from CIN
     private String adresse;
     private Long telephone;
+
+    @Column(unique = true)
     private String email;
+
     private Date dateNaissance;
+
 
     @OneToOne(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private compte compte;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_agence", nullable = false)
+    @JoinColumn(name = "idAgence", nullable = false)
     private agence agence;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

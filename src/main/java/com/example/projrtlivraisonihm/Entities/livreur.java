@@ -10,24 +10,27 @@ import java.util.*;
 public class livreur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_livreur;
+    private Long idLivreur;
     private String nom;
     private String prenom;
     private String ville ;
-    private String CIN;
+    private String cin;
     private String adresse;
     private Long telephone;
     private String email;
     private Date dateNaissance;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_admin", nullable = false)
+    @JoinColumn(name = "idAdmin", nullable = false)
     private admin admin;
 
-    @OneToMany(mappedBy = "livreur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "livreur", cascade =
+            CascadeType.ALL, fetch = FetchType.LAZY)
     private List<commande> commandes;
 
-    @OneToOne(mappedBy = "livreur", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @OneToOne(mappedBy = "livreur", cascade =
+            CascadeType.ALL, fetch = FetchType.LAZY,
+            optional = false)
     private compte compte;
 
 }

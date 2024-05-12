@@ -8,7 +8,7 @@ import lombok.Data;
 public class compte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_compte;
+    private Long idCompte;
     private String login;
     @Column(nullable = true)
     @Enumerated(value = EnumType.STRING)
@@ -16,15 +16,15 @@ public class compte {
     private String mdp;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_livreur", nullable = false)
+    @JoinColumn(name = "idLivreur", nullable = false)
     private livreur livreur;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_agence", nullable = false)
+    @JoinColumn(name = "idAgence", nullable = false)
     private agence agence;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_client", nullable = false)
+    @JoinColumn(name = "idClient", nullable = false)
     private client client;
 
 

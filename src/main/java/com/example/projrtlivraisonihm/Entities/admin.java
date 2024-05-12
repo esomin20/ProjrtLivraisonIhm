@@ -12,10 +12,10 @@ import java.util.List;
 public class admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_admin;
+    private Long idAdmin;
     private String nom;
     private String prenom;
-    private String CIN;
+    private String cin;
     private String adresse;
     private Long telephone;
     private String email;
