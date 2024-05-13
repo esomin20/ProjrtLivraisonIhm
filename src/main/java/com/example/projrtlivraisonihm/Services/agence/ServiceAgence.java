@@ -1,9 +1,7 @@
 package com.example.projrtlivraisonihm.Services.agence;
 
 import com.example.projrtlivraisonihm.Entities.agence;
-import com.example.projrtlivraisonihm.Entities.commande;
 import com.example.projrtlivraisonihm.Repesitory.AgenceRepository;
-import com.example.projrtlivraisonihm.Repesitory.CommandeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
