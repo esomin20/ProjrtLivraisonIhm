@@ -1,17 +1,17 @@
 package com.example.projrtlivraisonihm.Services.client;
 
-import com.example.projrtlivraisonihm.Entities.commande;
-import com.example.projrtlivraisonihm.Repesitory.ClientRespository;
-import org.springframework.stereotype.Service;
-
 import com.example.projrtlivraisonihm.Entities.client;
-import com.example.projrtlivraisonihm.Entities.livreur;
+import com.example.projrtlivraisonihm.Repesitory.ClientRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ServiceClient {
+
     private final ClientRespository clientRepository;
 
     @Autowired
@@ -19,46 +19,53 @@ public class ServiceClient {
         this.clientRepository = clientRepository;
     }
 
-    // Méthode pour trouver un client par son ID
-    public client trouverClientParId(Long idClient) {
-        return clientRepository.findById(idClient)
-                .orElseThrow(() -> new IllegalArgumentException("Client non trouvée avec ID: " + idClient));
+    public List<client> findAllClients() {
+        return clientRepository.findAll();
     }
 
-    // Méthode pour trouver tous les clients ayant un nom spécifique
-    public List<client> trouverClientsParNom(String nom) {
+    public Optional<client> findClientById(Long id) {
+        return clientRepository.findById(id);
+    }
+
+    public List<client> findClientsByName(String nom) {
         return clientRepository.findByNom(nom);
     }
 
-    // Méthode pour trouver tous les clients dont l'email contient un certain texte
-    public List<client> trouverClientsParEmail(String texte) {
+    public List<client> findClientsByEmailContaining(String texte) {
         return clientRepository.findByEmailContaining(texte);
     }
 
-    // Méthode pour trouver tous les clients ayant un prénom spécifique
-    public List<client> trouverClientsParPrenom(String prenom) {
+    public List<client> findClientsByFirstName(String prenom) {
         return clientRepository.findByPrenom(prenom);
     }
 
-    // Méthode pour trouver tous les clients nés après une certaine date
-    public List<client> trouverClientsNeApres(Date date) {
+    public List<client> findClientsBornAfter(Date date) {
         return clientRepository.findByDateNaissanceAfter(date);
     }
 
-    // Méthode pour trouver tous les clients ayant un certain nom et un certain prénom
-    public List<client> trouverClientsParNomEtPrenom(String nom, String prenom) {
+    public List<client> findClientsByNameAndFirstName(String nom, String prenom) {
         return clientRepository.findByNomAndPrenom(nom, prenom);
     }
 
-    // Méthode pour trouver tous les clients desservis par un livreur spécifique
-   /* public List<client> trouverClientsDesservisParLivreur(livreur livr) {
-        return clientRepository.getClientsDesservisParLivreur(livr);
+    public client saveClient(client nouveauClient) {
+        return clientRepository.save(nouveauClient);
     }
-*/
-    // testtt
 
-    public long countClient(){
+    public client updateClient(Long idClient, client clientMisAJour) {
+        Optional<client> clientExistant = clientRepository.findById(idClient);
+        if (clientExistant.isPresent()) {
+            clientMisAJour.setIdClient(idClient);
+            return clientRepository.save(clientMisAJour);
+        } else {
+            throw new IllegalArgumentException("Client non trouvé avec ID: " + idClient);
+        }
+    }
+
+    public void deleteClient(Long idClient) {
+        clientRepository.deleteById(idClient);
+    }
+
+    public long countClients() {
         return clientRepository.count();
     }
-
 }
